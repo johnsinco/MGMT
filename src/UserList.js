@@ -26,14 +26,9 @@ class UserList extends Component {
       )
     }
     updateUser(user, idx) {
-      console.log(`updateing user======${user} ${idx}`)
-      console.log(idx)
-      console.log(user)
       this.setState(prev => ({
-        users: prev.users.map((u,i) => (u.index !== idx) ? u : user)
+        users: prev.users.map((u,i) => (i !== idx) ? u : user)
       }))
-      console.log("state is.......")
-      console.log(this.state)
     }
 }
 

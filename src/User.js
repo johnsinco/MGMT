@@ -55,8 +55,7 @@ class User extends Component {
 
   save(event) {
     event.preventDefault()
-    console.log(event)
-    this.props.onChange(this.props, this.props.index)
+    this.props.onChange(this.state, this.props.index)
     this.setState({editing: false})
   }
 
