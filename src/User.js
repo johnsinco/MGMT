@@ -4,7 +4,8 @@ import AddressRow from './AddressRow'
 class User extends Component {
   constructor(props) {
     super(props)
-    this.state = {...props, ...{editing: false}}
+    var editnow = props.editing || false
+    this.state = {...props, ...{editing: editnow}}
     this.edit = this.edit.bind(this)
     this.delete = this.delete.bind(this)
     this.renderEdit = this.renderEdit.bind(this)
@@ -20,7 +21,8 @@ class User extends Component {
   }
   renderEdit() {
     return (
-      <div>
+      <tr>
+      <td colSpan="6">
         <form onSubmit={this.save}>
         <div>
           <label htmlFor="firstName">first name</label>
@@ -32,7 +34,8 @@ class User extends Component {
         </div>
         <button>Save</button>
         </form>
-      </div>
+        </td>
+      </tr>
     )
   }
   renderRow() {
@@ -40,7 +43,7 @@ class User extends Component {
       <tr key={this.props.key}>
         <td>{this.props.firstName}</td>
         <td>{this.props.lastName}</td>
-        <td><AddressRow {...this.props.address} /></td>
+        <td colSpan="3"><AddressRow {...this.props.address} /></td>
         <td><button onClick={this.edit} id="edit">edit</button></td>
         <td><button onClick={this.delete} id="delete">delete</button></td>
       </tr>

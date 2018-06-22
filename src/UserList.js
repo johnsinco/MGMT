@@ -11,17 +11,18 @@ class UserList extends Component {
       ]}
       this.eachUser = this.eachUser.bind(this)
       this.updateUser = this.updateUser.bind(this)
+      this.addUser = this.addUser.bind(this)
     }
     render() {
       return (
         <div className="container">
         <table className="userlist">
-        <thead><td>First Name</td><td>Last Name</td><td>Address</td></thead>
+        <thead><tr><th>First Name</th><th>Last Name</th><th>Address</th></tr></thead>
         <tbody>
           {this.state.users.map((user, idx) => this.eachUser(user, idx))}
         </tbody>
         </table>
-        <button onClick={console.log('foo')}>add user</button>
+        <button onClick={this.addUser}>add user</button>
         </div>
       )
     }
@@ -34,6 +35,18 @@ class UserList extends Component {
     updateUser(user, idx) {
       this.setState(prev => ({
         users: prev.users.map((u,i) => (i !== idx) ? u : user)
+      }))
+    }
+    addUser() {
+      var newUser = {
+        firstName: '', lastName: '', editing: true,
+        address: {}, index: this.state.users.length+1
+      }
+      this.setState(prev => ({
+        users: [
+          ...prev.users,
+          newUser
+        ]
       }))
     }
 }

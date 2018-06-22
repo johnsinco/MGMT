@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import userico from './user.svg'
 import './App.css';
 import UserList from './UserList'
