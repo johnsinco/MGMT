@@ -14,9 +14,15 @@ class UserList extends Component {
     }
     render() {
       return (
-        <ul>
+        <div className="container">
+        <table className="userlist">
+        <thead><td>First Name</td><td>Last Name</td><td>Address</td></thead>
+        <tbody>
           {this.state.users.map((user, idx) => this.eachUser(user, idx))}
-        </ul>
+        </tbody>
+        </table>
+        <button onClick={console.log('foo')}>add user</button>
+        </div>
       )
     }
 

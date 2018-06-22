@@ -23,11 +23,11 @@ class User extends Component {
       <div>
         <form onSubmit={this.save}>
         <div>
-          <label for="firstName">first name</label>
+          <label htmlFor="firstName">first name</label>
           <input name="firstName" value={this.state.firstName} onChange={this.updated} />
         </div>
         <div>
-          <label for="lastName">last name</label>
+          <label htmlFor="lastName">last name</label>
           <input name="lastName" value={this.state.lastName} onChange={this.updated} />
         </div>
         <button>Save</button>
@@ -37,15 +37,13 @@ class User extends Component {
   }
   renderRow() {
     return (
-      <li key={this.props.key}>
-      <div>
-        <span>{this.props.firstName}</span>
-        <span>{this.props.lastName}</span>
-        <AddressRow {...this.props.address} />
-        <button onClick={this.edit} id="edit">edit</button>
-        <button onClick={this.delete} id="delete">delete</button>
-      </div>
-      </li>
+      <tr key={this.props.key}>
+        <td>{this.props.firstName}</td>
+        <td>{this.props.lastName}</td>
+        <td><AddressRow {...this.props.address} /></td>
+        <td><button onClick={this.edit} id="edit">edit</button></td>
+        <td><button onClick={this.delete} id="delete">delete</button></td>
+      </tr>
     );
   }
 
